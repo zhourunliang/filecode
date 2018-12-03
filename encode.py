@@ -46,11 +46,11 @@ def decode(path):
 
 def encode(path):
     basename = os.path.basename(path)
-    # print(basename)
+    # print('basename',basename)
     dirname = os.path.dirname(path)
-    # print(dirname)
+    # print('dirname', dirname)
     new_name = base64.b64encode(basename.encode(encoding="utf-8")).decode()
-    # print(new_name)
+    # print('new_name', new_name)
     old_dir = path
     # print(old_dir)
     new_dir = os.path.join(dirname,str(new_name))
@@ -79,18 +79,18 @@ def main():
     if os.path.exists(path+'/lock'):
         print('已加码')
     else:
-        allDirList = getAllDir(path, dirList)
-        allDirList.sort(key = lambda i:len(i),reverse=True) 
-        # print(allDirList)
-        for i in allDirList:
-            r = encode(i)
-            if r is False:
-                return False
-
         allFileList = getAllFile(path, fileList)
         allFileList.sort(key = lambda i:len(i),reverse=True) 
         # print(allFileList)
         for i in allFileList:
+            r = encode(i)
+            if r is False:
+                return False
+
+        allDirList = getAllDir(path, dirList)
+        allDirList.sort(key = lambda i:len(i),reverse=True) 
+        # print(allDirList)
+        for i in allDirList:
             r = encode(i)
             if r is False:
                 return False
