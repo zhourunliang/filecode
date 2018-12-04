@@ -36,7 +36,7 @@ def encode(path):
     # print(basename)
     dirname = os.path.dirname(path)
     # print(dirname)
-    new_name = base64.b64encode(basename.encode(encoding="utf-8")).decode()
+    new_name = base64.urlsafe_b64encode(basename.encode(encoding="utf-8")).decode()
     # print(new_name)
     old_dir = path
     # print(old_dir)
@@ -49,7 +49,7 @@ def decode(path):
     # print(basename)
     dirname = os.path.dirname(path)
     # print(dirname)
-    new_name = base64.b64decode(basename).decode()
+    new_name = base64.urlsafe_b64decode(basename).decode()
     # print(new_name)
     old_dir = path
     # print(old_dir)

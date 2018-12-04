@@ -1,1 +1,1 @@
-path = 'C:\\Users\\run\\Documents\\Video\\bak'
+path = './test'
